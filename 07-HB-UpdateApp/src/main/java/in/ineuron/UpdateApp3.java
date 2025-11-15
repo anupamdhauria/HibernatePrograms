@@ -25,7 +25,7 @@ public class UpdateApp3 {
 			if (transaction != null) {
 				if (student != null) {
 
-					student.setSaddress("Dhalbhum");
+					student.setSaddress("DVM");
 					student.setSname("uday solanki");
 					flag = true;
 				}
