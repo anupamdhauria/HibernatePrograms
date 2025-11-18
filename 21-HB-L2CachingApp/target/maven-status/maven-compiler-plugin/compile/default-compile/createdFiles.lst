@@ -1,0 +1,4 @@
+in\ineuron\InsertApp.class
+in\ineuron\model\InsurancePolicy.class
+in\ineuron\util\HibernateUtil.class
+in\ineuron\SelectApp.class

@@ -1,0 +1,65 @@
+package in.ineuron;
+
+import org.hibernate.Transaction;
+
+import in.ineuron.model.PersonInfo;
+import in.ineuron.util.HibernateUtil;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+import org.hibernate.Session;
+
+public class InsertApp implements Serializable {
+   
+	private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) 
+    {
+    
+    	Transaction transaction=null;
+    	Session session=null;
+    	boolean flag=false;
+    	Integer id=null;
+    	try {
+		      session = HibernateUtil.getSession();
+		      System.out.println(session);
+		      if(session!=null)
+		    	transaction = session.beginTransaction();
+		      
+		      
+		      if(transaction!=null) {
+		    	
+		    	PersonInfo person = new PersonInfo();
+		    	person.setPname("Sachin");
+		    	person.setDob(LocalDate.of(1978, 3, 21));
+		    	person.setDom(LocalDateTime.of(1999, 5, 11, 7, 45));
+		    	person.setDoj(LocalTime.of(9, 36));
+		    	 id = (Integer)session.save(person);
+		    	 flag=true;
+		      }
+		    	  
+		      
+    	}catch(Exception e) {
+    		e.printStackTrace();   
+    		
+	    }finally{
+	    	
+	    	if(flag) {
+	    		transaction.commit();
+	    		System.out.println("✅ Record inserted successfully!");
+	    		System.out.println("Object saved with id:"+id);
+	    	}else {
+	    		transaction.rollback();
+	    		System.out.println("❌ Record Insertion Failed");
+	    	}
+	    	if(session!=null) {
+	    		  HibernateUtil.closeSession(session);
+	    	}
+	    	HibernateUtil.closeSessionFactory();
+	    }
+}
+}
