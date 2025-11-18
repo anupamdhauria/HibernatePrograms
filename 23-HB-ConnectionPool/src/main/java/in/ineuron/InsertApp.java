@@ -24,9 +24,9 @@ public class InsertApp {
 		      if(transaction!=null) {
 		    	  Student student=new Student();
 		    	 
-			      student.setSname("Rohit");
-			      student.setSaddress("MI");
-			      student.setMarks(99.9);
+			      student.setSname("abd");
+			      student.setSaddress("rcb");
+			      student.setMarks(86.9);
 			      session.persist(student);
 			      flag=true;
 		      }
@@ -36,14 +36,14 @@ public class InsertApp {
     		e.printStackTrace();   
     		
 	    }finally{
-//	    	
-//	    	if(flag) {
-//	    		transaction.commit();
-//	    		System.out.println("✅ Record Inserted successfully!");
-//	    	}else {
-//	    		transaction.rollback();
-//	    		System.out.println("❌ Record  Insertion Failed");
-//	    	}
+	    	
+	    	if(flag) {
+	    		transaction.commit();
+	    		System.out.println("✅ Record Inserted successfully!");
+	    	}else {
+	    		transaction.rollback();
+	    		System.out.println("❌ Record  Insertion Failed");
+	    	}
 	    	if(session!=null) {
 	    		  HibernateUtil.closeSession(session);
 	    	}

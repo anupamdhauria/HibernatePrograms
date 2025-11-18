@@ -34,7 +34,7 @@ public class SelectApp implements Serializable {
 				
 				session.clear();//remove all objects from L1-cache
 				
-				Thread.sleep(50000);//20secs(idleTimeout is expired so object removed from L2-cache)
+				Thread.sleep(20000);//20secs(idleTimeout is expired so object removed from L2-cache)
 				
 				System.out.println();
 				
